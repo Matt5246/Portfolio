@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { GithubIcon, LinkedinIcon, MailIcon, User2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Navigation } from "@/components/navigation";
+import { MobileNavigation, Navigation } from "@/components/navigation";
 import { SkillCard, skillsData } from "@/components/skill-card";
 import { WaveBackground, BlobBackground, GridBackground, CircuitBackground, GradientBackground } from "@/components/background-effects";
 
@@ -194,13 +194,18 @@ export default function Home() {
 
   return (
     <>
-      <Navigation />
-      <div className="h-screen snap-y snap-mandatory overflow-y-scroll ">
+      <div className="block md:hidden">
+        <MobileNavigation />
+      </div>
+      <div className="hidden md:block">
+        <Navigation />
+      </div>
+      <div className="h-screen overflow-y-scroll md:snap-y md:snap-mandatory">
         {sections.map((section) => (
           <section
             key={section.id}
             id={section.id}
-            className="h-screen snap-start flex flex-col justify-center p-8 relative"
+            className="min-h-screen md:h-screen snap-start flex flex-col justify-center p-8 relative"
           >
             {section.content}
           </section>

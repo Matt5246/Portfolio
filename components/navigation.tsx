@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { HomeIcon, UserIcon, CodeIcon, FolderIcon, MailIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -43,4 +43,37 @@ export function Navigation() {
       </ul>
     </motion.nav>
   );
+}
+
+
+export function MobileNavigation() {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
+    >
+      <nav className="bg-background/80 backdrop-blur-md rounded-full shadow-lg border px-4 py-2">
+        <ul className="flex items-center gap-4">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              <a
+                href={item.href}
+                className={cn(
+                  "flex flex-col items-center gap-1 p-2 rounded-full transition-colors",
+                  "hover:bg-muted",
+
+                )}
+              >
+                <item.icon className="h-5 w-5" />
+                <span className="sr-only">{item.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </motion.div>
+  )
 }
