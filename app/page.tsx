@@ -6,7 +6,42 @@ import { Button } from "@/components/ui/button";
 import { MobileNavigation, Navigation } from "@/components/navigation";
 import { SkillCard, skillsData } from "@/components/skill-card";
 import { WaveBackground, BlobBackground, GridBackground, CircuitBackground, GradientBackground } from "@/components/background-effects";
-
+import ContactMe from "@/components/ContactMe";
+import ExperienceCards from "@/components/ExperienceCards";
+const expData = [
+  {
+    title: "Student of Computer Science",
+    subtitle: "Opole University of Technology",
+    image: "https://d-art.ppstatic.pl/kadry/k/r/1/f7/32/654b6d1fee30d_o_xlarge.jpg",
+    // technologies: [
+    //     "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
+    //     "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301"
+    // ],
+    date: "Jan 1, 2020 - Present",
+    responsibilities: [
+      "Developed and maintained web applications using React and Node.js",
+      "Collaborated with cross-functional teams to define, design, and ship new features",
+      "Implemented responsive design and ensured cross-browser compatibility",
+      "Participated in code reviews and provided constructive feedback to peers",
+    ]
+  },
+  {
+    title: "web developer",
+    subtitle: "Side Character",
+    image: "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
+    technologies: [
+      "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
+      "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301"
+    ],
+    date: "Jan 1, 2020 - Present",
+    responsibilities: [
+      "Developed and maintained web applications using React and Node.js",
+      "Collaborated with cross-functional teams to define, design, and ship new features",
+      "Implemented responsive design and ensured cross-browser compatibility",
+      "Participated in code reviews and provided constructive feedback to peers"
+    ]
+  }
+];
 export default function Home() {
   const sections = [
     {
@@ -65,10 +100,9 @@ export default function Home() {
       ),
     },
     {
-      id: "about",
+      id: "experience",
       content: (
         <>
-          {/* <WaveBackground /> */}
           <div className="max-w-4xl mx-auto space-y-8">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
@@ -76,20 +110,14 @@ export default function Home() {
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold bg-gradient-to-r from-primary to-primary/50 bg-clip-text text-transparent"
             >
-              About Me
+              Experience
             </motion.h2>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg"
             >
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                I'm a passionate Full Stack Developer with over 3 years of experience
-                building web applications. I specialize in React, Next.js, Node.js, and
-                modern web technologies. When I'm not coding, you can find me
-                contributing to open source projects or learning foreign languages.
-              </p>
+              <ExperienceCards expData={expData} />
             </motion.div>
           </div>
         </>
@@ -160,7 +188,6 @@ export default function Home() {
       id: "contact",
       content: (
         <>
-          {/* <GradientBackground /> */}
           <div className="max-w-4xl mx-auto text-center space-y-8">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
@@ -174,17 +201,8 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-card/50 backdrop-blur-sm p-8 rounded-2xl shadow-lg"
             >
-              <p className="text-lg text-muted-foreground mb-6">
-                I'm always open to new opportunities and collaborations.
-              </p>
-              <Button
-                size="lg"
-                className="rounded-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70"
-              >
-                Contact Me
-              </Button>
+              <ContactMe />
             </motion.div>
           </div>
         </>
