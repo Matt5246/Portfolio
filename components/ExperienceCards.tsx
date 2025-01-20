@@ -6,6 +6,7 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Badge } from "@/components/ui/badge"
 import { CalendarIcon, BriefcaseIcon } from "lucide-react"
 
+
 export default function ExperienceList({ expData }: { expData: any[] }) {
     return (
         <Carousel className="w-full max-w-[260px] sm:max-w-[600px] xl:max-w-[900px] mx-auto">
@@ -44,15 +45,8 @@ export default function ExperienceList({ expData }: { expData: any[] }) {
                                     </div>
                                     {item.technologies && item.technologies.length > 0 && (
                                         <div className="flex flex-wrap justify-center gap-2">
-                                            {item.technologies.map((tech: string, i: number) => (
-                                                <Badge key={i} variant="secondary" className="px-2 py-1 text-xs sm:text-sm">
-                                                    <img
-                                                        className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 inline-block"
-                                                        src={tech || "/placeholder.svg"}
-                                                        alt={`Technology ${i + 1}`}
-                                                    />
-                                                    Tech {i + 1}
-                                                </Badge>
+                                            {item.technologies.map((TechIcon: React.ElementType, i: number) => (
+                                                <TechIcon key={i} className="w-5 h-5 sm:w-6 sm:h-6" />
                                             ))}
                                         </div>
                                     )}
@@ -85,6 +79,6 @@ export default function ExperienceList({ expData }: { expData: any[] }) {
             <CarouselPrevious className="left-0 sm:-left-12" />
             <CarouselNext className="right-0 sm:-right-12" />
         </Carousel>
-    )
+    );
 }
 

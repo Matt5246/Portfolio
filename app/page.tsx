@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { GithubIcon, LinkedinIcon, MailIcon, User2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNavigation, Navigation } from "@/components/navigation";
-import { SkillCard, skillsData } from "@/components/skill-card";
+import { SkillCard } from "@/components/skill-card";
 import ContactMe from "@/components/ContactMe";
 import ExperienceCards from "@/components/ExperienceCards";
-import { expData, projectsData } from "@/lib/data";
+import { expData, projectsData, skillsData } from "@/lib/data";
 import { PiImageBroken } from "react-icons/pi";
 
 export default function Home() {
@@ -16,7 +16,6 @@ export default function Home() {
       id: "hero",
       content: (
         <>
-          {/* <BlobBackground /> */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,17 +52,20 @@ export default function Home() {
               transition={{ delay: 0.6 }}
               className="flex gap-4"
             >
-              <Button variant="outline" size="icon" className="rounded-full">
+              <Button variant="outline" size="icon" className="rounded-full" onClick={() => window.open("https://github.com/Matt5246")}>
                 <GithubIcon className="w-5 h-5" />
               </Button>
-              <Button variant="outline" size="icon" className="rounded-full">
+              <Button variant="outline" size="icon" className="rounded-full" onClick={() => window.open("https://www.linkedin.com/in/pawe%C5%82-nizio%C5%82ek-602b57295/")}>
                 <LinkedinIcon className="w-5 h-5" />
               </Button>
               <Button variant="outline" size="icon" className="rounded-full">
-                <MailIcon className="w-5 h-5" />
+                <a href="#contact">
+                  <MailIcon className="w-5 h-5" />
+                </a>
               </Button>
+
             </motion.div>
-          </motion.div>
+          </motion.div >
         </>
       ),
     },
@@ -95,7 +97,6 @@ export default function Home() {
       id: "skills",
       content: (
         <>
-          {/* <GridBackground /> */}
           <div className="max-w-4xl mx-auto space-y-8">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
