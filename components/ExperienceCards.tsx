@@ -44,7 +44,7 @@ export default function ExperienceList({ expData }: { expData: any[] }) {
                                     </div>
                                     {item.technologies && item.technologies.length > 0 && (
                                         <div className="flex flex-wrap justify-center gap-2">
-                                            {item.technologies.map((tech, i) => (
+                                            {item.technologies.map((tech: string, i: number) => (
                                                 <Badge key={i} variant="secondary" className="px-2 py-1 text-xs sm:text-sm">
                                                     <img
                                                         className="w-4 h-4 sm:w-5 sm:h-5 mr-1 sm:mr-2 inline-block"
@@ -59,10 +59,10 @@ export default function ExperienceList({ expData }: { expData: any[] }) {
                                     <div className="space-y-3 sm:space-y-4">
                                         <div className="flex items-center space-x-2 text-primary">
                                             <BriefcaseIcon className="w-5 h-5 sm:w-6 sm:h-6" />
-                                            <h5 className="text-lg sm:text-xl font-semibold">Responsibilities</h5>
+                                            <h5 className="text-lg sm:text-xl font-semibold">Knowledge</h5>
                                         </div>
                                         <ul className="space-y-2 text-xs sm:text-sm md:text-base text-gray-300 max-h-36 sm:max-h-48 overflow-y-auto pr-2 sm:pr-4 scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-800">
-                                            {item.responsibilities.map((task, i) => (
+                                            {item.responsibilities.map((task: string, i: number) => (
                                                 <motion.li
                                                     key={i}
                                                     initial={{ opacity: 0, x: -20 }}

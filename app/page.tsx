@@ -5,43 +5,11 @@ import { GithubIcon, LinkedinIcon, MailIcon, User2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MobileNavigation, Navigation } from "@/components/navigation";
 import { SkillCard, skillsData } from "@/components/skill-card";
-import { WaveBackground, BlobBackground, GridBackground, CircuitBackground, GradientBackground } from "@/components/background-effects";
 import ContactMe from "@/components/ContactMe";
 import ExperienceCards from "@/components/ExperienceCards";
-const expData = [
-  {
-    title: "Student of Computer Science",
-    subtitle: "Opole University of Technology",
-    image: "https://d-art.ppstatic.pl/kadry/k/r/1/f7/32/654b6d1fee30d_o_xlarge.jpg",
-    // technologies: [
-    //     "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
-    //     "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301"
-    // ],
-    date: "Jan 1, 2020 - Present",
-    responsibilities: [
-      "Developed and maintained web applications using React and Node.js",
-      "Collaborated with cross-functional teams to define, design, and ship new features",
-      "Implemented responsive design and ensured cross-browser compatibility",
-      "Participated in code reviews and provided constructive feedback to peers",
-    ]
-  },
-  {
-    title: "web developer",
-    subtitle: "Side Character",
-    image: "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
-    technologies: [
-      "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301",
-      "https://nto.pl/budowa-nowego-gmachu-politechniki-opolskiej-lipsk-zmienia-oblicze-budynek-jest-juz-oszklony-kiedy-przyjmie-studentow/ar/c5-18052301"
-    ],
-    date: "Jan 1, 2020 - Present",
-    responsibilities: [
-      "Developed and maintained web applications using React and Node.js",
-      "Collaborated with cross-functional teams to define, design, and ship new features",
-      "Implemented responsive design and ensured cross-browser compatibility",
-      "Participated in code reviews and provided constructive feedback to peers"
-    ]
-  }
-];
+import { expData, projectsData } from "@/lib/data";
+import { PiImageBroken } from "react-icons/pi";
+
 export default function Home() {
   const sections = [
     {
@@ -137,7 +105,7 @@ export default function Home() {
             >
               Skills
             </motion.h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 xl:grid-cols-5 gap-6">
               {skillsData.map((skill, index) => (
                 <SkillCard key={skill.name} skill={skill} index={index} />
               ))}
@@ -150,7 +118,6 @@ export default function Home() {
       id: "projects",
       content: (
         <>
-          {/* <CircuitBackground /> */}
           <div className="max-w-5xl mx-auto space-y-8">
             <motion.h2
               initial={{ opacity: 0, x: -20 }}
@@ -161,20 +128,27 @@ export default function Home() {
               Featured Projects
             </motion.h2>
             <div className="grid md:grid-cols-2 gap-8">
-              {[1, 2, 3, 4].map((i) => (
+              {projectsData.map((project, index) => (
                 <motion.div
-                  key={i}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                   whileHover={{ y: -5 }}
                   className="group relative bg-card/50 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg"
+
                 >
-                  <div className="aspect-video bg-muted" />
+                  {project.image ? (
+                    <img src={project.image} alt={project.title} className="aspect-video object-cover cursor-pointer" onClick={() => window.open(project.url, "_blank")} />
+                  ) : (
+                    <div className="aspect-video flex items-center justify-center bg-primary/10 cursor-pointer" onClick={() => window.open(project.url, "_blank")}>
+                      <span className="text-muted-foreground"><div className="flex flex-row items-center justify-center"><PiImageBroken className="w-8 h-8 mr-2" /><p>No Image Available</p></div> </span>
+                    </div>
+                  )}
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">Project {i}</h3>
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
                     <p className="text-muted-foreground">
-                      A brief description of project {i} and its key features.
+                      {project.description}
                     </p>
                   </div>
                 </motion.div>
